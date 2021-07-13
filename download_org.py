@@ -46,15 +46,26 @@ class DownloadHandler(FileSystemEventHandler):
                         print("found word doc") 
                     new_destination = self.folder_to_track + "/word/" + filename
                     os.rename(src, new_destination)
+                elif "EXCEL" in file_info.upper():
+                    if(debug == 1):
+                        print("found xcel doc")
+                    new_destination = self.folder_to_track + "/excel/" + filename
+                    os.rename(src, new_destination)
+                elif "CSV" in file_info.upper():
+                    if(debug == 1):
+                        print("found CSV file")
+                    new_destination = self.folder_to_track + "/csv/" + filename
+                    os.rename(src, new_destination)
             except IsADirectoryError:
                 pass
             #new_destination = folder_destination + "/" + filename
             #print(filename)
             #os.rename(src, new_destination)
-
+    #end of on_modified
+#end of class DownloadHandler
 
 def main():
-    folder_to_track = "/home/gdunlap/Desktop/myFolder"
+    folder_to_track = "/home/gdunlap/Downloads"
     #folder_destination = "/home/gdunlap/Desktop/newfolder"
 
     event_handler = DownloadHandler(folder_to_track)
