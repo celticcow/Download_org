@@ -2,12 +2,16 @@
 
 import os
 import magic
+from os.path import expanduser
 
 #sudo apt-get install python3-magic
 
 def main():
     directory_to_check = "/home/gdunlap/Downloads"
     files = os.listdir(directory_to_check)
+
+    print(directory_to_check)
+    print(expanduser("~") + "/Downloads")
 
     for f in files:
         print(f)

@@ -2,6 +2,7 @@
 
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+from os.path import expanduser
 #pip3 install watchdog
 #sudo apt-get install python3-magic
 
@@ -65,7 +66,8 @@ class DownloadHandler(FileSystemEventHandler):
 #end of class DownloadHandler
 
 def main():
-    folder_to_track = "/home/gdunlap/Downloads"
+    #folder_to_track = "/home/gdunlap/Downloads"
+    folder_to_track = expanduser("~") + "/Downloads"
     #folder_destination = "/home/gdunlap/Desktop/newfolder"
 
     event_handler = DownloadHandler(folder_to_track)
